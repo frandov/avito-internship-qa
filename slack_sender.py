@@ -7,6 +7,7 @@ class SlackSender:
     def __init__(self):
         try:
             with open('slack_data.json') as f:
+                # токен из этого файла лучше хранить в hashicorp vault, например
                 self._json_data = json.load(f)
             self._client = slack.WebClient(token=self._json_data['bot_token'])
         except Exception as e:
